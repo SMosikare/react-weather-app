@@ -1,0 +1,76 @@
+.Weather {
+  color: rgb(255, 255, 255);
+  max-width: 800px;
+  margin: 100px auto;
+}
+
+.Weather .left-section {
+  background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.4) 60%,
+      rgba(0, 0, 0, 0.6) 92%
+    ),
+    url("./background.avif") no-repeat center;
+  border-radius: 16px;
+  text-align: center;
+  padding-block: 25px;
+  transform: translateX(15px) scale(1.05);
+}
+
+.Weather .city {
+  font-size: 40px;
+  letter-spacing: 1px;
+}
+
+.Weather .date {
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.Weather .temp {
+  font-size: 60px;
+}
+
+.Weather .units {
+  position: relative;
+  top: -30px;
+  font-size: 18px;
+}
+
+.Weather .right-section {
+  background-color: rgb(35, 41, 51);
+  border-radius: 16px;
+  padding: 30px 30px 30px 45px;
+}
+
+.Weather .form {
+  position: relative;
+}
+
+.Weather .input {
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  padding-right: 70px;
+}
+
+.Weather .input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.Weather .btn {
+  color: rgba(255, 255, 255, 0.7);
+  border: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.Weather .label {
+  font-weight: 500;
+}
+
+.Weather .label + div {
+  display: inline-flex;
+  justify-content: right;
+}
