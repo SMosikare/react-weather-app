@@ -4,6 +4,7 @@ import "./Weather.css";
 import FormattedDate from "./FormattedDate";
 
 export default function Weather(props) {
+  const [city, setCity] = useState(props.defaultCity);
   const [weatherData, setWeatherData] = useState({ fetched: false });
 
   function handleResponse(response) {
@@ -24,9 +25,18 @@ export default function Weather(props) {
   function search() {
     const apiKey = "4o0269f4b7t3d5f7f0cfc4a0af394b27";
     const unit = "metric";
-    const apiUrl = `https://api.shecodes.io/weather/v1/current?query=${props.defaultCity}&key=${apiKey}&units=${unit}`;
+    const apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${unit}`;
 
     axios.get(apiUrl).then(handleResponse);
+  }
+
+  function updateCityName(event) {
+    setCity(event.target.value);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
   }
 
   if (weatherData.fetched) {
@@ -58,12 +68,13 @@ export default function Weather(props) {
           </div>
 
           <div className="col-7 right-section">
-            <form className="form mb-3">
+            <form className="form mb-3" onSubmit={handleSubmit}>
               <input
                 type="search"
                 placeholder="Enter a city.."
                 className="input form-control"
                 autoFocus="on"
+                onChange={updateCityName}
               />
 
               <button type="submit" className="btn">
