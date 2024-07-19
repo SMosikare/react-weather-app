@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import FormattedDate from "./FormattedDate";
 import WeatherTemperature from "./WeatherTemperature";
+import WeatherIcon from "./WeatherIcon";
 import "./Weather.css";
 
 export default function Weather(props) {
@@ -15,7 +16,7 @@ export default function Weather(props) {
       city: response.data.city,
       date: response.data.time,
       temp: response.data.temperature.current,
-      icon: response.data.condition.icon_url,
+      icon: response.data.condition.icon,
       description: response.data.condition.description,
       country: response.data.country,
       humidity: response.data.temperature.humidity,
@@ -51,13 +52,9 @@ export default function Weather(props) {
 
             <WeatherTemperature temp={weatherData.temp} />
 
-            <img
-              src={weatherData.icon}
-              className="weatherIcon m-3"
-              alt={weatherData.description}
-            />
+            <WeatherIcon icon={weatherData.icon} />
 
-            <h3 className="text-capitalize">
+            <h3 className="text-capitalize pt-2">
               <i>{weatherData.description}</i>
             </h3>
           </div>
