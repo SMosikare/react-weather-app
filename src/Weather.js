@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { ThreeDots } from "react-loader-spinner";
 import axios from "axios";
 import FormattedDate from "./FormattedDate";
 import WeatherTemperature from "./WeatherTemperature";
@@ -101,6 +102,17 @@ export default function Weather(props) {
   } else {
     search();
 
-    return <div>Loading..</div>;
+    return (
+      <ThreeDots
+        visible={true}
+        height="80"
+        width="80"
+        color="white"
+        radius="9"
+        ariaLabel="three-dots-loading"
+        wrapperStyle={{}}
+        wrapperClass=""
+      />
+    );
   }
 }
