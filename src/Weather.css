@@ -36,6 +36,9 @@
   background-color: rgb(35, 41, 51);
   border-radius: 16px;
   padding: 30px 30px 30px 45px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .Weather .form {

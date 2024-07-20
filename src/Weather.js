@@ -4,13 +4,13 @@ import FormattedDate from "./FormattedDate";
 import WeatherTemperature from "./WeatherTemperature";
 import WeatherIcon from "./WeatherIcon";
 import "./Weather.css";
+import WeatherForecast from "./WeatherForecast";
 
 export default function Weather(props) {
   const [city, setCity] = useState(props.defaultCity);
   const [weatherData, setWeatherData] = useState({ fetched: false });
 
   function handleResponse(response) {
-    console.log(response);
     setWeatherData({
       fetched: true,
       city: response.data.city,
@@ -52,7 +52,7 @@ export default function Weather(props) {
 
             <WeatherTemperature temp={weatherData.temp} />
 
-            <WeatherIcon icon={weatherData.icon} />
+            <WeatherIcon icon={weatherData.icon} width={100} height={100} />
 
             <h3 className="text-capitalize pt-2">
               <i>{weatherData.description}</i>
@@ -60,33 +60,39 @@ export default function Weather(props) {
           </div>
 
           <div className="col-7 right-section">
-            <form className="form mb-3" onSubmit={handleSubmit}>
-              <input
-                type="search"
-                placeholder="Enter a city.."
-                className="input form-control"
-                autoFocus="on"
-                onChange={updateCityName}
-              />
+            <div className="right-section-top">
+              <form className="form mb-3" onSubmit={handleSubmit}>
+                <input
+                  type="search"
+                  placeholder="Enter a city.."
+                  className="input form-control"
+                  autoFocus="on"
+                  onChange={updateCityName}
+                />
 
-              <button type="submit" className="btn">
-                Search
-              </button>
-            </form>
+                <button type="submit" className="btn">
+                  Search
+                </button>
+              </form>
 
-            <div className="row">
-              <div className="col label">Country</div>
-              <div className="col">{weatherData.country}</div>
+              <div className="row">
+                <div className="col label">Country</div>
+                <div className="col">{weatherData.country}</div>
+              </div>
+
+              <div className="row">
+                <div className="col label">Humidity</div>
+                <div className="col">{weatherData.humidity}%</div>
+              </div>
+
+              <div className="row">
+                <div className=" col label">Wind Speed</div>
+                <div className="col">{weatherData.windSpeed}km/h</div>
+              </div>
             </div>
 
-            <div className="row">
-              <div className="col label">Humidity</div>
-              <div className="col">{weatherData.humidity}%</div>
-            </div>
-
-            <div className="row">
-              <div className=" col label">Wind Speed</div>
-              <div className="col">{weatherData.windSpeed}km/h</div>
+            <div className="right-section-bottom">
+              <WeatherForecast city={weatherData.city} />
             </div>
           </div>
         </div>

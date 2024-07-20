@@ -1,0 +1,11 @@
+.WeatherForecast {
+  padding: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
+  border-radius: 6px;
+}
+
+.forecast-day,
+.forecast-temp {
+  font-size: 14px;
+  opacity: 0.8;
+}
