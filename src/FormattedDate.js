@@ -21,7 +21,7 @@ export default function FormattedDate(props) {
       "Decemeber",
     ];
 
-    const month = currentTime.getDay();
+    const month = currentTime.getMonth();
     return months[month];
   }
 
